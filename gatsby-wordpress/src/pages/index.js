@@ -34,6 +34,7 @@ const links = [
 ]
 
 const samplePageLinks = [
+  { text: "Blog", url: "blog" },
   {
     text: "Page 2",
     url: "page-2",
