@@ -6,45 +6,68 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPage = ({data}) => {
-    console.log(data);
+    console.log("test", data);
+
+    const blogs = [];
+    console.log("wppost", data.allWpPost.edges);
+    data.allWpPost.edges.forEach((post, index) => {
+      blogs.push(
+        <Blog image={post.node.featuredImage?.node.publicUrl} 
+        heading={post.node.title} 
+        paragraph={post.node.excerpt} 
+        full={post.node.content} />
+        )
+    })
   
   return (
-    <Layout>
-    <Seo title="Page two" />
-    <h1>{data.wpPost.title}</h1>
-    <Blog image={data.allWpMediaItem.edges[0].node.sourceUrl} heading={data.wpPost.title} comment={data.wpPost.title} />
-    {/* <div dangerouslySetInnerHTML={{__html: data.wpPost.content}} /> */}
-  <Link to="/">Go back to the homepage</Link>
+  <Layout>
+    <Seo title="Blog Page" />
+    <h1>Blogz</h1>
+    {blogs}
+    -----
+    <Link to="/">Go back to the homepagezz</Link>
+    {/* <Blog image={data.allWpMediaItem.edges[0].node.sourceUrl} heading={data.allWpPost.edges[0].node.title} paragraph={data.allWpPost.edges[0].node.excerpt} full={data.allWpPost.edges[0].node.content} /> */}    
   </Layout>
   )
 }
 
-// export const pageQuery = graphql`
-// query {
-//     wpPost(slug: {eq: "blog"}) {
-//       title
-//       content
-//       contentType {
-//         node {
-//           id
-//         }
-//       }
-//     }
-//   }`
-
   export const BlogQuery = graphql`
   query {
-    wpPost(slug: {eq: "hello-there"}) {
-      title
-      content
-    }
-    allWpMediaItem {
+    allWpPost {
       edges {
         node {
-          sourceUrl
+          id
+          title
+          content
+          excerpt
+          featuredImage {
+            node {
+              publicUrl
+            }
+          }
         }
       }
     }
   }`
 
 export default BlogPage
+
+// allWpPost {
+//   edges {
+//     node {
+//       id
+//       title
+//       content
+//       excerpt
+//     }
+//   }
+// }
+// allWpMediaItem {
+//   edges {
+//     node {
+//       id
+//       filename
+//       sourceUrl
+//     }
+//   }
+// }

@@ -11,16 +11,17 @@ function Blog (props) {
       };
 
     const post = props;
-    console.log(props);
-    return ( <div>
-<input type="text" name="title" value={message} onChange={handleChange}/>
-    
-        <h2>{post.image}</h2>
-        <img src={post.image} alt="test" />
-        <p>{post.heading}</p>
-        <p>{post.comment}</p>
-        <p>{message}</p>
-        </div>
+    console.log("props from Blog", props);
+    return ( 
+    <div>
+        <h2>{post.heading}</h2>
+        <div>{post.paragraph}</div>   
+        {post.image && (
+            <img src={post.image} alt="test" />
+        )}     
+        <div>{post.full}</div>
+        {/* <div dangerouslySetInnerHTML={{__html: post.full}} /> */}
+    </div>
     )
 }
 
