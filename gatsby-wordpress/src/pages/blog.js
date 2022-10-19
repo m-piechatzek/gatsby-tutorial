@@ -26,7 +26,6 @@ const BlogPage = ({data}) => {
     {blogs}
     -----
     <Link to="/">Go back to the homepagezz</Link>
-    {/* <Blog image={data.allWpMediaItem.edges[0].node.sourceUrl} heading={data.allWpPost.edges[0].node.title} paragraph={data.allWpPost.edges[0].node.excerpt} full={data.allWpPost.edges[0].node.content} /> */}    
   </Layout>
   )
 }

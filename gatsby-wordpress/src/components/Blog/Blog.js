@@ -15,12 +15,10 @@ function Blog (props) {
     return ( 
     <div>
         <h2>{post.heading}</h2>
-        <div>{post.paragraph}</div>   
+        <div dangerouslySetInnerHTML={{__html: post.paragraph}} />
         {post.image && (
             <img src={post.image} alt="test" />
         )}     
-        <div>{post.full}</div>
-        {/* <div dangerouslySetInnerHTML={{__html: post.full}} /> */}
     </div>
     )
 }
