@@ -25,7 +25,8 @@ const BlogPage = ({data}) => {
     <h1>Blogz</h1>
     {blogs}
     -----
-    <Link to="/">Go back to the homepagezz</Link>
+    <br />
+    <Link to="/">Go back to the homepage</Link>
   </Layout>
   )
 }
